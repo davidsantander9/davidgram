@@ -1,12 +1,14 @@
 
 from django.urls import path
 
-from davidgram import views 
-
-
+from davidgram import views as local_views
+from posts import views as post_views
 
 urlpatterns = [
-    path('hello-world/', views.hello_world),
-    path('sorted_numbers/', views.sorted_numbers),
-    path('hi/<str:name>/<int:age>/', views.say_hi)
+    path('hello-world/', local_views.hello_world),
+    path('sorted_numbers/', local_views.sorted_numbers),
+    path('hi/<str:name>/<int:age>/', local_views.say_hi),
+
+    path('posts/', post_views.list_posts),
+    
 ]
