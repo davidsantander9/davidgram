@@ -14,11 +14,7 @@ def hello_world(request):
         now=str(now))
     )
 
-def hi(request):
-    """Hi."""
-    numbers_str = request.GET.get('numbers').split(",")
-    numbers = list(map(int, numbers_str))
+def sorted_numbers(request):
+    numbers = request.GET['numbers'].split(",")
     numbers.sort()
-    print( numbers )
     return JsonResponse({'numbers':numbers})
-    # return HttpResponse(str(numbers))
