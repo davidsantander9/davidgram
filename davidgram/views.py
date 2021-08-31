@@ -17,4 +17,4 @@ def hello_world(request):
 def sorted_numbers(request):
     numbers = request.GET['numbers'].split(",")
     numbers.sort()
-    return JsonResponse({'numbers':numbers})
+    return JsonResponse({'status':'ok','numbers':numbers})
