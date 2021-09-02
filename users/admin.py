@@ -2,9 +2,11 @@
 
 # Django
 from django.contrib import admin
+from django.contrib.auth.admin import UserAdmin as BaseUserAdmin
 
 # Models
 from users.models import Profile
+from django.contrib.auth.models import User
 
 # Register your models here.
 
@@ -41,3 +43,16 @@ class ProfileAdmin(admin.ModelAdmin ):
 
     )
     readonly_fields = ('created', 'modified', 'user')
+
+class ProfileInline(admin.StackedInline):
+    """Profile in-line admin for users"""
+    model = Profile
+    can_delete = False
+    verbose_name_plural = 'profiles'
+
+class  UserAdmin(BaseUserAdmin):
+    """Add profile admin to base user admin"""
+    inlines = (ProfileInline,)
+
+admin.site.unregister(User)
+admin.site.register(User, UserAdmin)
