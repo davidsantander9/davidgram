@@ -35,4 +35,9 @@ class ProfileAdmin(admin.ModelAdmin ):
                 ('biography')
                 ),
         }),
+        ('Metadata', {
+            'fields': (('created', 'modified'),)
+        })
+
     )
+    readonly_fields = ('created', 'modified', 'user')
