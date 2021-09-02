@@ -53,6 +53,12 @@ class ProfileInline(admin.StackedInline):
 class  UserAdmin(BaseUserAdmin):
     """Add profile admin to base user admin"""
     inlines = (ProfileInline,)
+    list_display = (
+        'username',
+        'email',
+        'first_name',
+        'is_active'
+    )
 
 admin.site.unregister(User)
 admin.site.register(User, UserAdmin)
